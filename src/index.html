@@ -1,29 +1,348 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hello Rigo with Vanilla.js</title>
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
-      integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
-      crossorigin="anonymous"
-    />
-    <link rel="shortcut icon" href="./4geeks.ico" />
-  </head>
-  <body>
-    <div class="container-fluid text-center">
-      <h1 class="mt-5">Hello Rigo!</h1>
-      <img src="./rigo-baby.jpg" />
-      <p class="alert alert-warning mt-4">
-        If this text is <b>not</b> centered and <b>yellow</b>, you probably have
-        an error
-      </p>
-      <div class="fixed-bottom p-4">
-        Made with ❤️ by
-        <a href="https://www.4geeksacademy.com">4Geeks Academy</a>
-      </div>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <!--Fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <!--Font-->
+    <link href="http://fonts.cdnfonts.com/css/billabong" rel="stylesheet">
+    <link href="http://fonts.cdnfonts.com/css/proxima-nova-condensed" rel="stylesheet">
+    <!--Custom CSS-->
+    <link rel="stylesheet" href="./styles.css">
+
+    <title>Instagram Feed</title>
+</head>
+
+<body style="background-color: #D1D5DB;">
+
+        <nav class="navbar navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand mx-5" id="navTitle">
+                    <i class="fab fa-instagram" id="insta-logo"></i><b id="title">Instagram</b>
+                </a>
+                <div class="d-flex px-5">
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                        data-bs-whatever="@getbootstrap">Create a New Post
+                    </button>
+
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" 
+                            aria-hidden="true">
+                         <div class="modal-dialog">
+                                <div class="modal-content">
+                                 <div class="modal-body">
+                                      <form>
+                                         <div class="mb-3">
+                                                <textarea class="form-control" id="message-text" style="height:100px"></textarea>
+                                           </div>
+                                      </form>
+                                      <button class="btn btn-outline-dark">
+                                           <i class="fas fa-camera"></i>
+                                     </button>
+                                     <button class="btn btn-outline-dark">
+                                          <i class="fas fa-map-marker-alt"></i>
+                                     </button>
+                                  </div>
+                                  <div class="modal-footer">
+                                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                                     <button type="button" class="btn btn-success">Publish</button>
+                                 </div>
+                            </div>
+                        </div>
+                </div>
+                    <div>
+                        <div class="dropdown mx-1">
+                            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton2"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-cog" id="gear"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="dropdownMenuButton2">
+                                <li><a class="dropdown-item active" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">LogOut</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <ul class="nav nav-tabs d-flex justify-content-center bg-white" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab"
+                    aria-controls="home" aria-selected="true"><button class="button btn btn-light"><i class="far fa-image"></i></button></a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab"
+                    aria-controls="profile" aria-selected="false"><button class="button btn btn-light"><i class="fas fa-th"></i></button></a>
+            </li>
+        </ul>
+
+    <div class="container-fluid">
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+            <div class="photo-feed">
+                <div class="row">
+                    <div class="col-5 mx-auto">
+                        <div class="card my-5">
+                            <div class="card-title p-2" style="height:37px;">
+                                <div class="title float-start">
+                                    <h2>My First Photo</h2>
+                                </div>
+                                <div class="date float-end my-2">
+                                    <p class="text-secondary">12/14</p>
+                                </div>
+                            </div>
+                            <img src="https://cdn.britannica.com/61/9461-050-2979E42F/Standard-schnauzer.jpg" alt="dog">
+                            <div class="card-footer">
+                                <div>
+                                    <p><b>23 likes</b></p>
+                                </div>
+                                <div>
+                                    <p>This is my first photo of the feed, this is a multi line comment for testing purposes. I am learning to code with <b>#BreatheCode</b></p>
+                                </div>
+                                <div>
+                                    <i class="far fa-heart"><span class="mx-3">Comment...</span></i>
+                                    <i class="fas fa-ellipsis-v float-end"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card my-5">
+                            <div class="card-title p-2" style="height:37px;">
+                                <div class="title float-start">
+                                    <h2>My First Photo</h2>
+                                </div>
+                                <div class="date float-end">
+                                    <p class="text-secondary my-2">12/14</p>
+                                </div>
+                            </div>
+                            <img src="https://img.freepik.com/foto-gratis/mesa-madera-vacia-frente-cafe-cafeteria-borrosa-o-fondo-trabajo_1936-539.jpg?size=626&ext=jpg" alt="blur">
+                            <div class="card-footer">
+                                <div>
+                                    <p><b>23 likes</b></p>
+                                </div>
+                                <div>
+                                    <p>This is my first photo of the feed, this is a multi line comment for testing purposes. I am learning to code with <b>#BreatheCode</b></p>
+                                </div>
+                                <div>
+                                    <i class="far fa-heart"><span class="mx-3">Comment...</span></i>
+                                    <i class="fas fa-ellipsis-v float-end"></i>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="card my-5">
+                            <div class="card-title p-2" style="height:37px;">
+                                <div class="title float-start">
+                                    <h2>My First Photo</h2>
+                                </div>
+                                <div class="date float-end my-2">
+                                    <p class="text-secondary">12/14</p>
+                                </div>
+                            </div>
+                            <img src="https://media.istockphoto.com/photos/low-view-of-a-dog-skater-against-blue-background-picture-id1174649981?k=6&m=1174649981&s=612x612&w=0&h=a2KqUvLDL4NIwRpX5kADiQKk2K0NSBsgih9d33EJLas=" alt="dog-skate">
+                            <div class="card-footer">
+                                <div>
+                                    <p><b>23 likes</b></p>
+                                </div>
+                                <div>
+                                    <p>This is my first photo of the feed, this is a multi line comment for testing purposes. I am learning to code with <b>#BreatheCode</b></p>
+                                </div>
+                                <div>
+                                    <i class="far fa-heart"><span class="mx-3">Comment...</span></i>
+                                    <i class="fas fa-ellipsis-v float-end"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card my-5">
+                            <div class="card-title p-2" style="height:37px;">
+                                <div class="title float-start">
+                                    <h2>My First Photo</h2>
+                                </div>
+                                <div class="date float-end">
+                                    <p class="text-secondary my-2">12/14</p>
+                                </div>
+                            </div>
+                            <img src="https://comunidadblogger.net/wp-content/uploads/2020/09/woman-programming-computer-FVTELWK.jpg" alt="woman-computer">
+                            <div class="card-footer">
+                                <div>
+                                    <p><b>23 likes</b></p>
+                                </div>
+                                <div>
+                                    <p>This is my first photo of the feed, this is a multi line comment for testing purposes. I am learning to code with <b>#BreatheCode</b></p>
+                                </div>
+                                <div>
+                                    <i class="far fa-heart"><span class="mx-3">Comment...</span></i>
+                                    <i class="fas fa-ellipsis-v float-end"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card my-5">
+                            <div class="card-title p-2" style="height:37px;">
+                                <div class="title float-start">
+                                    <h2>My First Photo</h2>
+                                </div>
+                                <div class="date float-end">
+                                    <p class="text-secondary my-2">12/14</p>
+                                </div>
+                            </div>
+                            <img src="https://media.giphy.com/media/p0RDMJGgMXF96/giphy.gif" alt="gif-Jordan">
+                            <div class="card-footer">
+                                <div>
+                                    <p><b>23 likes</b></p>
+                                </div>
+                                <div>
+                                    <p>This is my first photo of the feed, this is a multi line comment for testing purposes. I am learning to code with <b>#BreatheCode</b></p>
+                                </div>
+                                <div>
+                                    <i class="far fa-heart"><span class="mx-3">Comment...</span></i>
+                                    <i class="fas fa-ellipsis-v float-end"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card my-5">
+                            <div class="card-title p-2" style="height:37px;">
+                                <div class="title float-start">
+                                    <h2>My First Photo</h2>
+                                </div>
+                                <div class="date float-end">
+                                    <p class="text-secondary my-2">12/14</p>
+                                </div>
+                            </div>
+                            <img src="https://i.guim.co.uk/img/media/9b9eb19ffb2bbc70fa996bcf39bdb19b615d0935/0_83_5472_3283/master/5472.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=3f2f9de143ce0b19493ef5883fba1c43" alt="computer">
+                            <div class="card-footer">
+                                <div>
+                                    <p><b>23 likes</b></p>
+                                </div>
+                                <div>
+                                    <p>This is my first photo of the feed, this is a multi line comment for testing purposes. I am learning to code with <b>#BreatheCode</b></p>
+                                </div>
+                                <div>
+                                    <i class="far fa-heart"><span class="mx-3">Comment...</span></i>
+                                    <i class="fas fa-ellipsis-v float-end"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card my-5">
+                            <div class="card-title p-2" style="height:37px;">
+                                <div class="title float-start">
+                                    <h2>My First Photo</h2>
+                                </div>
+                                <div class="date float-end">
+                                    <p class="text-secondary my-2">12/14</p>
+                                </div>
+                            </div>
+                            <img src="https://img.devrant.com/devrant/rant/r_1747105_A4PDG.jpg" alt="server">
+                            <div class="card-footer">
+                                <div>
+                                    <p><b>23 likes</b></p>
+                                </div>
+                                <div>
+                                    <p>This is my first photo of the feed, this is a multi line comment for testing purposes. I am learning to code with <b>#BreatheCode</b></p>
+                                </div>
+                                <div>
+                                    <i class="far fa-heart"><span class="mx-3">Comment...</span></i>
+                                    <i class="fas fa-ellipsis-v float-end"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card my-5">
+                            <div class="card-title p-2" style="height:37px;">
+                                <div class="title float-start">
+                                    <h2>My First Photo</h2>
+                                </div>
+                                <div class="date float-end">
+                                    <p class="text-secondary my-2">12/14</p>
+                                </div>
+                            </div>
+                            <img src="https://us.123rf.com/450wm/vladimirfloyd/vladimirfloyd1711/vladimirfloyd171100093/88987799-retrato-de-mujer-joven-hermosa-haciendo-cara-divertida-sobre-fondo-blanco.jpg?ver=6" alt="woman-face">
+                            <div class="card-footer">
+                                <div>
+                                    <p><b>23 likes</b></p>
+                                </div>
+                                <div>
+                                    <p>This is my first photo of the feed, this is a multi line comment for testing purposes. I am learning to code with <b>#BreatheCode</b></p>
+                                </div>
+                                <div>
+                                    <i class="far fa-heart"><span class="mx-3">Comment...</span></i>
+                                    <i class="fas fa-ellipsis-v float-end"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card my-5">
+                            <div class="card-title p-2" style="height:37px;">
+                                <div class="title float-start">
+                                    <h2>My First Photo</h2>
+                                </div>
+                                <div class="date float-end">
+                                    <p class="text-secondary my-2">12/14</p>
+                                </div>
+                            </div>
+                            <img src="https://www.theladders.com/wp-content/uploads/bad-employee-190816-800x450.jpg" alt="at-work">
+                            <div class="card-footer">
+                                <div>
+                                    <p><b>23 likes</b></p>
+                                </div>
+                                <div>
+                                    <p>This is my first photo of the feed, this is a multi line comment for testing purposes. I am learning to code with <b>#BreatheCode</b></p>
+                                </div>
+                                <div>
+                                    <i class="far fa-heart"><span class="mx-3">Comment...</span></i>
+                                    <i class="fas fa-ellipsis-v float-end"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="container-fluid">
+                
+                    <div class="gallery_collection d-grid">
+                        <img class="gallery_img h-100 w-100" src="https://cdn.britannica.com/61/9461-050-2979E42F/Standard-schnauzer.jpg" alt="dog">
+                        <img class="gallery_img h-100 w-100" src="https://img.freepik.com/foto-gratis/mesa-madera-vacia-frente-cafe-cafeteria-borrosa-o-fondo-trabajo_1936-539.jpg?size=626&ext=jpg" alt="dog">
+                        <img class="gallery_img h-100 w-100" src="https://media.istockphoto.com/photos/low-view-of-a-dog-skater-against-blue-background-picture-id1174649981?k=6&m=1174649981&s=612x612&w=0&h=a2KqUvLDL4NIwRpX5kADiQKk2K0NSBsgih9d33EJLas=">
+                    </div>
+                
+                    <div class="gallery_collection d-grid">
+                        <img class="gallery_img h-100 w-100" src="https://comunidadblogger.net/wp-content/uploads/2020/09/woman-programming-computer-FVTELWK.jpg" alt="woman-computer">
+                        <img class="gallery_img h-100 w-100" src="https://media.giphy.com/media/p0RDMJGgMXF96/giphy.gif" alt="gif-Jordan">
+                        <img class="gallery_img h-100 w-100" src="https://i.guim.co.uk/img/media/9b9eb19ffb2bbc70fa996bcf39bdb19b615d0935/0_83_5472_3283/master/5472.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=3f2f9de143ce0b19493ef5883fba1c43" alt="computer">
+                    </div>
+                
+                    <div class="gallery_collection d-grid">
+                        <img class="gallery_img h-100 w-100" src="https://img.devrant.com/devrant/rant/r_1747105_A4PDG.jpg" alt="server">
+                        <img class="gallery_img h-100 w-100" src="https://us.123rf.com/450wm/vladimirfloyd/vladimirfloyd1711/vladimirfloyd171100093/88987799-retrato-de-mujer-joven-hermosa-haciendo-cara-divertida-sobre-fondo-blanco.jpg?ver=6" alt="woman-face">
+                        <img class="gallery_img h-100 w-100" src="https://www.theladders.com/wp-content/uploads/bad-employee-190816-800x450.jpg" alt="at-work">
+                    </div>
+                
+            </div>
+        </div>
     </div>
-  </body>
+
+    <!--Javascript-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+</body>
 </html>

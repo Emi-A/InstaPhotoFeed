@@ -1,1 +1,46 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Proxima Nova Condensed", sans-serif;
+}
+
+.button:focus {
+  background-color: #6b7280;
+  color: white;
+}
+
+.gallery_collection {
+  /*Crea tres columnas con el mismo el mismo ancho*/
+  grid-template-columns: repeat(3, 1fr);
+  /*altura de las filas*/
+  grid-auto-rows: 300px;
+}
+
+.gallery_img {
+  object-fit: cover;
+}
+
+#gear {
+  color: #6b7280;
+}
+
+#insta-logo {
+  color: #6b7280;
+}
+
+#title {
+  color: #6b7280;
+  font-family: "Billabong", sans-serif;
+  font-size: 29px;
+  padding: 6px;
+}
+
+#home-tab,
+#profile-tab {
+  outline: none;
+  border: none;
+}
